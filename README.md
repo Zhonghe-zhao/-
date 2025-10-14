@@ -1,58 +1,43 @@
-# 我的简历
+赵忠赫
+Go-后端开发工程师
+求职 2004/11/26
+zhaozhonghe@smail.sut.edu.cn 18545032297
+https://blog.zhaozhonghe.me
+教育经历
+沈阳工业大学 电子与计算机工程 · 本科 · GPA 3.0 2023/9/9 - 2027/7/7
+英语CET4
 
-> 我的简历，求职使用，记录自己的一点点成长
+### 项目经历
 
-###  赵忠赫
+银行项目管理 后端负责人 2024/6 - 2025/8
+项目描述：基于 Go 语言构建的高性能银行核心系统，提供账户管理、交易转账等 API，系统采用容器化部
+署，确保高可用和弹性伸缩。
+技术栈：Go, Gin, PostgreSQL, Redis, Asynq, Docker, Kubernetes, GitHub Actions, JWT/PASETO
+并发稳定性的验证： 利用 Go 语言的 Goroutine 机制 实现了高并发请求处理，并通过 PostgreSQL 事务锁
+机制，在本机模拟高负载场景下进行了稳定性测试，验证了在高并发 I/O 场景下数据一致性和并发处理逻辑
+的正确性。
 
-[3041322213@qq.com](mailto:3041322213@qq.com) | 📱 18545032297 | [blog](https://blog.zhaozhonghe.me)
+性能基线测试与调优： 使用本地环境进行性能基线测试。通过对比发现，引入 Redis 缓存后，将核心 API
+的平均响应延迟从 200ms 降低至 40ms，实现了 400% 的性能提升。
 
- 求职意向：Go 后端开发实习
+安全认证与权限控制：采用 PASETO/JWT 令牌实现无状态认证，并结合 Bcrypt 加密存储用户敏感信息。
+DevOps 与自动化部署： 使用 Docker 对应用进行容器化，并通过 GitHub Actions 自动化构建、推送到
+AWS ECR，实现了持续集成（CI）。高可用与弹性部署： 应用部署至 AWS EKS 集群，利用 Kubernetes
+实现了服务的滚动更新和高可用。具备对 Deployment 和 Service 等核心资源的配置能力。
 
-------
+异步解耦与系统弹性：引入 Asynq 异步任务队列，极大地提升了核心交易 API 的响应速度和系统的容错
+性。
 
-### 教育背景
+工程质量与代码规范：利用 SQLC 实现 SQL 代码生成，保证了类型安全并减少了手动编写样板代码的错
+误。通过 Gomock 完成核心业务逻辑的单元测试，覆盖率达 80%，确保代码质量。
 
-  **沈阳工业大学** - 电子与计算机工程 （2023.09 - 2027.06）
+### 专业技能
 
-------
+计算机基础: 熟悉计算机网络如 TCP 三次握手四次挥手、流量控制、超时重传、TLS 握手等；日常使用
+Linux 系统 进行开发，了解 Linux 常用命令和基本操作系统知识；熟悉基本数据结构算法
 
-### 技术栈
+编程语言： Golang,熟悉 goroutine，channel，select，context，GMP 模型 go 协程并发机制，熟悉 GC
+算法；熟 悉 Go 语言中 map 等内置结构的实现
 
-  - **Golang**：熟练掌握 goroutines、channel、Worker Pool，理解GMP，垃圾回收机制，掌握单元测试。
-  - **Web 框架**：熟悉使用 Gin、gorm理解中间件机制、参数绑定，。
-  - **数据库**：熟练 PostgreSQL、Redis，掌握 SQL 、事务隔离、索引，熟悉 ACID。
-  - **微服务通信**：熟悉 gRPC 与 Protocol Buffers，了解服务注册与高效通信。
-  - **DevOps**：熟悉 Docker、docker-compose，能独立容器化部署服务；会使用 GitHub Actions 实现自动构建与部署。
-  - **基础知识**：掌握操作系统线程模型、计算机网络 TCP/IP、HTTP协议。
-
-------
-
-### 项目经验
-
-#### 银行系统（Simple Bank）
-
-  **技术栈**：Go, Gin, PostgreSQL, Redis, Docker, sqlc, gRPC, Passeto
-  
-   **项目地址**：https://github.com/Zhonghe-zhao/Simple_bank
-   
-   **项目描述**：
-   
-   独立实现一个支持并发转账、账户管理、身份认证的简化银行系统。
-
-  **关键成果**：
-
-1. **实现账户、转账、查询等 RESTful API && 使用gRPC 重构用户相关接口** 替代传统 RESTful 实现，通过 `.proto` 文件统一定义接口与数据结构，实现接口代码自动生成与强类型校验。
-
-​       当前项目未涉及服务间通信，但该设计为后续拆分微服务架构打下基础，**提升接口性能、可维护性与扩展性**。
-
-2. **自定义事务处理逻辑**，解决并发转账数据不一致和死锁的避免，**通过事务隔离级别+锁控制+事务执行顺序控制**。
-
-3. **基于 sqlc 生成类型安全查询代码**，替代 ORM，查询效率提升约 25%。
-
-4. **使用 Passeto 代替 JWT 实现身份认证**，减少 token 漏洞风险，支持 token 刷新与注销。
-
-5. 使用 **gRPC + Protobuf** 封装内部 RPC 服务，支持模块解耦与服务扩展。
-
-6. 项目使用 **Docker 一键部署**，并使用 GitHub Actions 实现自动构建镜像。
-
-
+框架与中间件:： 熟悉 grpc框架基本使用；了解 Postgres 关系型数据库，了解数据库基本知识如 锁、索
+引、事务、隔离机制等；了解 Redis 
